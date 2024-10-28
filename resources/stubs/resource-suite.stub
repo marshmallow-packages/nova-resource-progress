@@ -1,0 +1,26 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Illuminate\Database\Eloquent\Model;
+use Marshmallow\ResourceProgress\Contracts\ResourceProgressSuiteInterface;
+
+class $CLASS_NAME$ implements ResourceProgressSuiteInterface
+{
+    public function getSuiteKey(): string
+    {
+        return '$SIMPLE_NAME_LOWER$';
+    }
+
+    public function getSuiteName(): string
+    {
+        return __('$SIMPLE_NAME$');
+    }
+
+    public function getActions(Model $model): array
+    {
+        return [
+            //
+        ];
+    }
+}

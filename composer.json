@@ -1,0 +1,39 @@
+{
+    "name": "marshmallow/resource-progress",
+    "description": "A Laravel Nova field.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+     "repositories": {
+        "1": {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    },
+    "require": {
+        "php": "^8.3",
+        "marshmallow/metadata": "^v1.2.0"
+    },
+    "require-dev": {
+        "laravel/nova": "^4.33.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Marshmallow\\ResourceProgress\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Marshmallow\\ResourceProgress\\FieldServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,20 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Marshmallow\ResourceProgress\Actions\ResourceProgressAction;
+use Marshmallow\ResourceProgress\Contracts\ResourceProgressSuiteInterface;
+
+class $CLASS_NAME$ extends ResourceProgressAction
+{
+    public function handle(ResourceProgressSuiteInterface $suite): void
+    {
+        // Run your magic here
+
+        /** Increment all the checks you do */
+        $this->incrementCheckCount();
+
+        /** Trigger a fail message if one of the checks fails */
+        $this->fail(__('This check for :class failed', ['class' => '`$CLASS_NAME$`']));
+    }
+}
