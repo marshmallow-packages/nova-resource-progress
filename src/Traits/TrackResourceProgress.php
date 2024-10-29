@@ -50,13 +50,22 @@ trait TrackResourceProgress
         return [];
     }
 
+    public function getProgressMagicMethodName(string $suite, string $prepend, string $append): string
+    {
+        return Str::of($suite)
+            ->studly()
+            ->prepend($prepend)
+            ->append($append)
+            ->toString();
+    }
+
     public function getProgressActions(string $suite = 'progress'): array
     {
-        $get_suite_action_method_name = Str::of($suite)
-            ->studly()
-            ->prepend('set')
-            ->append('Actions')
-            ->toString();
+        $get_suite_action_method_name = $this->getProgressMagicMethodName(
+            suite: $suite,
+            prepend: 'set',
+            append: 'Actions',
+        );
 
         $suite_actions = (method_exists($this, $get_suite_action_method_name))
             ? $this->{$get_suite_action_method_name}()

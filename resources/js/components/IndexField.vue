@@ -1,6 +1,5 @@
 <template>
     <div style="display:flex;justify-items:center;gap: 0.25rem;">
-
         <div style="position:relative;" v-for="(suite_settings, suite) in field.suites" v-bind:key="suite">
             <Menu v-if="field.value && field.value[suite]">
                 <ProgressCircle :circle_size="field.circle_size" :percentage="field.value[suite].percentage" :color_ranges="field.color_ranges" :stroke_width="field.stroke_width"/>
@@ -13,6 +12,7 @@
                 </template>
             </Menu>
         </div>
+        <NoDataAvailable v-if="!field.value" :label="field.no_data_label"/>
     </div>
 </template>
 
@@ -20,6 +20,7 @@
 import helpers from "../helpers.js";
 import ProgressTooltip from "./ProgressTooltip.vue";
 import ProgressCircle from "./ProgressCircle.vue";
+import NoDataAvailable from "./NoDataAvailable.vue";
 
 import {
   vTooltip,
@@ -33,6 +34,7 @@ export default {
         Menu,
         ProgressTooltip,
         ProgressCircle,
+        NoDataAvailable,
     },
 
     data() {
@@ -57,7 +59,7 @@ export default {
 .circular-progress {
   --half-size: calc(var(--size) / 2);
   --radius: calc((var(--size) - var(--stroke-width)) / 2);
-  --circumference: calc(var(--radius) * pi * 2);
+  --circumference: calc(var(--radius) * 3.14 * 2);
   --dash: calc((var(--progress) * var(--circumference)) / 100);
 }
 

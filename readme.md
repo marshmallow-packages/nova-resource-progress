@@ -2,9 +2,18 @@
 use HasMetadata;
 use TrackResourceProgress;
 
-#[RequiredFilledFields(suite: 'progress', fields: ['name', 'intro', 'description'])]
-#[RequiredFilledFields(suite: 'publish', fields: ['name', 'intro'])]
+#[ResourceProgressSuite(suite: 'progress', name: 'Progress')]
+#[ResourceProgressSuite(suite: 'publish', name: 'Publish', fields: ['name', 'intro'])]
 class Product extends ModelsProduct implements HasMedia, Sortable
+{
+    // Optional if you dont provide the fields in the attribute
+    public function getProgressRequiredFields(): array
+    {
+        return ['name', 'intro', 'description', 'supplier_id', 'product_category_id'];
+    }
+}
+
+
 ```
 
 ```php
@@ -36,5 +45,9 @@ ResourceProgress::make(__('Progress')),
 
 
 ```php
-IndexResourceProgress::make(self::class)->standalone(),
+// Selected resources
+IndexResourceProgress::make(),
+
+// All resources
+IndexResourcesProgress::make(self::class)->standalone(),
 ``

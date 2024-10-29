@@ -15,7 +15,7 @@ class ResourceProgressSuite implements ResourceProgressSuiteInterface
      * @param  array|string  $classes
      * @return void
      */
-    public function __construct(public string $suite, public string $name) {}
+    public function __construct(public string $suite, public string $name, public array $fields = []) {}
 
     public function getSuiteKey(): string
     {

@@ -23,6 +23,7 @@ class ResourceProgress extends Field
         $field = new static($name, 'resource_progress');
         $field->withMeta([
             'suites' => $suites,
+            'no_data_label' => __('No data'),
         ]);
 
         $field->fillUsing(function () {
