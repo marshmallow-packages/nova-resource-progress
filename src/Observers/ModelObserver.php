@@ -3,10 +3,28 @@
 namespace Marshmallow\ResourceProgress\Observers;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 
 class ModelObserver
 {
+    /**
+     * Indicates if ResourceProgress will dispatch the observer's events after all database transactions have committed.
+     *
+     * @var bool
+     */
+    public $afterCommit;
+
+    /**
+     * Create a new observer instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->afterCommit = Config::get('resource-progress.after_commit', false);
+    }
+
     public function created(Model $model): void
     {
         $this->updateProgressSuites($model);
