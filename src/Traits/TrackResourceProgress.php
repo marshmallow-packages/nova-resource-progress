@@ -6,6 +6,7 @@ use ReflectionClass;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Marshmallow\ResourceProgress\Events\ProgressUpdated;
 use Marshmallow\ResourceProgress\Contracts\ResourceProgressSuiteInterface;
 
 trait TrackResourceProgress
@@ -41,6 +42,8 @@ trait TrackResourceProgress
 
         Arr::set($current_progress, $suite->getSuiteKey(), $progress);
         $this->resource_progress = $current_progress;
+
+        event(new ProgressUpdated($this, $suite, $current_progress));
 
         return $progress;
     }
