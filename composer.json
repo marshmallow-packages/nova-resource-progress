@@ -17,7 +17,7 @@
         "marshmallow/metadata": "^v1.2.0"
     },
     "require-dev": {
-        "laravel/nova": "^4.33.0"
+        "laravel/nova": "^4.33.0|^5.0"
     },
     "autoload": {
         "psr-4": {
