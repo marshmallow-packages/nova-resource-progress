@@ -42,12 +42,13 @@ class ModelObserver
 
     public function updateProgressSuites(Model $model)
     {
-        $model_class = get_class($model);
-        $model_class::getResourceProgressSuites()
-            ->each(function ($attribute_settings, $suite) use ($model): void {
-                $model->fresh()->updateProgress(
-                    Arr::get($attribute_settings, 'attribute')
-                );
-            });
+        if (method_exists($model, 'getResourceProgressSuites')) {
+            $model::getResourceProgressSuites()
+                ->each(function ($attribute_settings, $suite) use ($model): void {
+                    $model->fresh()->updateProgress(
+                        Arr::get($attribute_settings, 'attribute')
+                    );
+                });
+        }
     }
 }

@@ -12,7 +12,9 @@ class ResourceProgressSuite implements ResourceProgressSuiteInterface
     /**
      * Create a new attribute instance.
      *
-     * @param  array|string  $classes
+     * @param  string  $suite
+     * @param  string  $name
+     * @param  array  $fields
      * @return void
      */
     public function __construct(public string $suite, public string $name, public array $fields = []) {}
@@ -24,7 +26,7 @@ class ResourceProgressSuite implements ResourceProgressSuiteInterface
 
     public function getSuiteName(): string
     {
-        return $this->name ?? $this->suite;
+        return $this->name ?: $this->suite;
     }
 
     public function getActions(Model $model): array
